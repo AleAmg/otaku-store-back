@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { Product } = require("./../models");
+const { User } = require("./../models");
 
 router.get("/", (req, res) => {
-  Product.find({})
+  User.find({})
     .then((products) => {
       res.send(products);
     })
@@ -13,17 +13,16 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const productos = {
-    title: req.body.title,
-    price: req.body.price,
-    description: req.body.description,
-    available: req.body.available,
-    image: req.body.image,
+  const user = {
+    name: req.body.name,
+    password: req.body.password,
+    mail: req.body.mail,
+    admin: req.body.admin,
   };
 
-  Product.create(productos)
-    .then((product) => {
-      res.send(product);
+  User.create(user)
+    .then((user) => {
+      res.send(user);
     })
     .catch((err) => console.log(err));
 });

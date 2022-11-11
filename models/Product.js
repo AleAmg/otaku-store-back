@@ -7,27 +7,21 @@ const ProductSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
+    require: true,
   },
   description: {
     type: String,
+    require: true,
   },
   image: {
     type: String,
   },
   available: {
     type: Boolean,
+    require: true,
   },
 });
 
 const Product = mongoose.model("Product", ProductSchema);
-/* 
-Product.find({})
-  .then((products) => {
-    console.log(products);
-    mongoose.connection.close();
-  })
-  .catch((err) => {
-    console.log(err);
-  }); */
 
 module.exports = Product;
